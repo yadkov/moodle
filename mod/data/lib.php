@@ -3287,6 +3287,7 @@ function data_pluginfile($course, $cm, $context, $filearea, $args, $forcedownloa
         if (!$file = $fs->get_file_by_hash(sha1($fullpath)) or $file->is_directory()) {
             return false;
         }
+        require_once($CFG->dirroot . '/local/moddatalog/add_to_log.php');
 
         // finally send the file
         send_stored_file($file, 0, 0, true, $options); // download MUST be forced - security!
